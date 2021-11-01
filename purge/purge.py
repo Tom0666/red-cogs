@@ -1,5 +1,6 @@
 import discord
 from redbot.core import checks, commands
+from redbot.core.bot import Red
 from redbot.core.i18n import cog_i18n, Translator
 
 _ = T_ = Translator("Purge", __file__)
