@@ -1,0 +1,15 @@
+{
+	"name": "Purge",
+	"short": "Delete multiple messages at once.",
+	"description": "Delete multiple messages at once.",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+	"install_msg": "Thanks for installing Purge!",
+	"author": ";Tom#0666",
+	"required_cogs": {},
+	"requirements": [],
+	"tags": [],
+	"min_bot_version": "3.3.10",
+	"hidden": false,
+	"disabled": false,
+	"type": "COG"
+}
