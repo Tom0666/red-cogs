@@ -10,6 +10,10 @@ class Purge(commands.Cog):
     def __init__(self, bot: Red):
         super().__init__()
         self.bot = bot
+   
+    async def initialize(self):
+        await self._maybe_update_config()
+        self._ready.set()
 
     @commands.command("purge", aliases=["delete", "prune"])
     @commands.cooldown(1, 10, commands.BucketType.user)
