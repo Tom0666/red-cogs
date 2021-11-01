@@ -7,6 +7,7 @@ _ = T_ = Translator("Purge", __file__)
 
 @cog_i18n(_)
 class Purge(commands.Cog):
+    """Delete multiple messages at once."""
     def __init__(self, bot: Red):
         super().__init__()
         self.bot = bot
