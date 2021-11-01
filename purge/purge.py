@@ -1,6 +1,8 @@
 import discord
 from redbot.core import checks, commands
-from redbot.core.i18n import cog_i18n
+from redbot.core.i18n import cog_i18n, Translator
+
+_ = T_ = Translator("Purge", __file__)
 
 @cog_i18n(_)
 class Purge(commands.Cog):
