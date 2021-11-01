@@ -1,4 +1,4 @@
-import discord
+import discord, asyncio
 from redbot.core import checks, commands
 from redbot.core.bot import Red
 from redbot.core.i18n import cog_i18n, Translator
@@ -10,6 +10,7 @@ class Purge(commands.Cog):
     def __init__(self, bot: Red):
         super().__init__()
         self.bot = bot
+        self._ready = asyncio.Event()
    
     async def initialize(self):
         self._ready.set()
