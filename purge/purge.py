@@ -26,5 +26,8 @@ class Purge(commands.Cog):
         **Arguments**:
         > <amount> = the amount of messages to delete.
         """
-        await ctx.message.delete()
+        try:
+            await ctx.message.delete()
+        except:
+            pass
         await ctx.channel.purge(limit=amount)
