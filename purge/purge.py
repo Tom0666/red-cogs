@@ -18,6 +18,7 @@ class Purge(commands.Cog):
 
     @commands.command("purge", aliases=["delete", "prune"])
     @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.guild_only()
     @checks.mod_or_permissions(manage_messages=True)
     async def purge(self, ctx: commands.Context, amount: int):
         """
