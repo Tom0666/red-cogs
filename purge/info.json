@@ -4,7 +4,7 @@
 	"description": "Delete multiple messages at once.",
     "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
 	"install_msg": "Thanks for installing Purge!",
-	"author": [";Tom#0666"]
+	"author": [";Tom#0666"],
 	"required_cogs": {},
 	"requirements": [],
 	"tags": [],
