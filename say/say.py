@@ -19,10 +19,14 @@ class Say(commands.Cog):
     @commands.command("say", aliases=["echo"])
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.guild_only()
-    async def say(self, ctx: commands.Context, message):
-        """Make the [botname] say something."""
+    async def say(self, ctx: commands.Context, *, message):
+        """Make [botname] say something."""
         try:
             await ctx.message.delete()
         except:
             pass
         await ctx.send(message)
+        
+    @commands.Cog.listener()
+    async def on_command_error(self, error):
+        ctx.command.reset_cooldown(ctx)
