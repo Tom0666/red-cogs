@@ -26,4 +26,14 @@ class Say(commands.Cog):
             pass
         await ctx.send(message)
         
+    @commands.command("loudsay", aliases=["lecho", "lsay", "loudecho"])
+    @checks.admin_or_permissions(manage_roles=True)
+    async def loudsay(self, ctx, *, message):
+        """Same as `[p]say` command but [botname] can mention roles"""
+        try:
+            await ctx.message.delete()
+        else:
+            pass
+        await ctx.send(message, allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True)
+        
 
