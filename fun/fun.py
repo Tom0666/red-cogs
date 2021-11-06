@@ -73,6 +73,8 @@ class Fun(commands.Cog):
         super().__init__()
         self.bot = bot
         self._ready = asyncio.Event()
+        self.text_flip = {}
+        self.generate_text_flip()
 
     async def red_delete_data_for_user(self, **kwargs):
         """ Nothing to delete """
