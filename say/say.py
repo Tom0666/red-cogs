@@ -32,7 +32,7 @@ class Say(commands.Cog):
         """Same as `[p]say` command but [botname] can mention roles"""
         try:
             await ctx.message.delete()
-        else:
+        except:
             pass
         await ctx.send(message, allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True)
         
