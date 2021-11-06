@@ -35,5 +35,3 @@ class Say(commands.Cog):
         except:
             pass
         await ctx.send(message, allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True)
-        
-
