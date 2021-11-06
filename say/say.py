@@ -2,6 +2,7 @@ import discord, asyncio
 from redbot.core import checks, commands
 from redbot.core.bot import Red
 from redbot.core.i18n import cog_i18n, Translator
+from .converters import FuzzyRole
 
 _ = T_ = Translator("Say", __file__)
 
@@ -28,11 +29,11 @@ class Say(commands.Cog):
         
     @commands.command("loudsay", aliases=["lecho", "lsay", "loudecho", "forcemention"])
     @checks.admin_or_permissions(manage_roles=True)
-    async def loudsay(self, ctx, *, message):
+    async def loudsay(self, ctx, role: FuzzyRole, *, message=None):
         """Same as `[p]say` command but [botname] can mention roles"""
         try:
             await ctx.message.delete()
         except:
             pass
-        await ctx.send(message, allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True))
+        await ctx.send(role.mention, ' ', message, allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True))
                     
