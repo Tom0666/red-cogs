@@ -1,0 +1,15 @@
+{
+	"name": "Fun",
+	"short": "Have Fun.",
+	"description": "Have Fun.",
+  "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+	"install_msg": "Thanks for installing Fun!",
+	"author": [";Tom#0666"],
+	"required_cogs": {},
+	"requirements": [],
+	"tags": [],
+	"min_bot_version": "3.3.10",
+	"hidden": false,
+	"disabled": false,
+	"type": "COG"
+}
