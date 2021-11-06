@@ -1,4 +1,4 @@
-import datetime
+import datetime, asyncio
 import time
 from enum import Enum
 from random import randint, choice
@@ -64,11 +64,13 @@ class Fun(commands.Cog):
         _("Outlook not so good"),
         _("Very doubtful"),
     ]
-
+    async def initialize(self):
+        self._ready.set()
     _ = T_
     def __init__(self, bot):
         super().__init__()
         self.bot = bot
+        self._ready = asyncio.Event()
 
     async def red_delete_data_for_user(self, **kwargs):
         """ Nothing to delete """
