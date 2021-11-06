@@ -7,6 +7,7 @@ from typing import Final, Optional, Union
 import urllib.parse
 import aiohttp
 import discord, os
+from redbot.core.utils.chat_formatting import pagify
 from redbot.core import commands, checks
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
