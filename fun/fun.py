@@ -169,7 +169,7 @@ class Fun(commands.Cog):
         Thanks Sinbad!
         """
         pre_processed = super().format_help_for_context(ctx)
-        return f"{pre_processed}\n\nCog Version: {self.__version__}"
+        return f"{pre_processed}"
 
     # used in [p]react, checks if it's possible to react with the duper string or not
     def has_dupe(self, duper: Union[str, list]) -> bool:
