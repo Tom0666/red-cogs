@@ -2,7 +2,7 @@ import datetime, asyncio
 import time
 from enum import Enum
 from random import randint, choice
-from typing import Final
+from typing import Final, Optional, Union
 import urllib.parse
 import aiohttp
 import discord, os
