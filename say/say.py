@@ -35,5 +35,9 @@ class Say(commands.Cog):
             await ctx.message.delete()
         except:
             pass
+        if not message:
+            message = ""
+        else:
+            message = message
         await ctx.send(f"{role.mention} {message}", allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True))
                     
