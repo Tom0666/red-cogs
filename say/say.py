@@ -31,13 +31,23 @@ class Say(commands.Cog):
     @checks.admin_or_permissions(manage_roles=True)
     async def loudsay(self, ctx, role: FuzzyRole, *, message=None):
         """Same as `[p]say` command but [botname] can mention roles"""
+        message = f"{role.mention}: {message}" if message else role.mention
         try:
             await ctx.message.delete()
         except:
             pass
-        if not message:
-            message = ""
+        mentionPerms = discord.AllowedMentions(everyone=True, roles=True, users=True)
+        me = ctx.channel.guild.me
+        if (
+            not role.mentionable
+            and not channel.permissions_for(me).mention_everyone
+            and channel.permissions_for(me).manage_roles
+            and me.top_role > role
+        ):
+            await role.edit(mentionable=True)
+            await ctx.send(message, allowed_mentions=mentionPerms)
+            await asyncio.sleep(1.5)
+            await role.edit(mentionable=False)
         else:
-            message = message
-        await ctx.send(f"{role.mention} {message}", allowed_mentions=discord.AllowedMentions(everyone=True, users=True, roles=True))
+            await ctx.send(message, allowed_mentions=mentionPerms)
                     
