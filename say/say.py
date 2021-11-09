@@ -40,8 +40,8 @@ class Say(commands.Cog):
         me = ctx.channel.guild.me
         if (
             not role.mentionable
-            and not channel.permissions_for(me).mention_everyone
-            and channel.permissions_for(me).manage_roles
+            and not ctx.channel.permissions_for(me).mention_everyone
+            and ctx.channel.permissions_for(me).manage_roles
             and me.top_role > role
         ):
             await role.edit(mentionable=True)
