@@ -31,23 +31,33 @@ class Say(commands.Cog):
     @checks.admin_or_permissions(manage_roles=True)
     async def loudsay(self, ctx, role: FuzzyRole, *, message=None):
         """Same as `[p]say` command but [botname] can mention roles"""
-        message = f"{role.mention}: {message}" if message else role.mention
-        try:
-            await ctx.message.delete()
-        except:
-            pass
-        mentionPerms = discord.AllowedMentions(everyone=True, roles=True, users=True)
-        me = ctx.channel.guild.me
-        if (
-            not role.mentionable
-            and not ctx.channel.permissions_for(me).mention_everyone
-            and ctx.channel.permissions_for(me).manage_roles
-            and me.top_role > role
-        ):
-            await role.edit(mentionable=True)
-            await ctx.send(message, allowed_mentions=mentionPerms)
-            await asyncio.sleep(1.5)
-            await role.edit(mentionable=False)
+        role_obj = role
+        if not role_obj.mentionable:
+            await role_obj.edit(mentionable=True)
+            if message:
+                await ctx.send(
+                    "{}: {}".format(role_obj.mention, message),
+                    allowed_mentions=discord.AllowedMentions(
+                        everyone=False, users=False, roles=[role_obj]
+                    ),
+                )
+            else:
+                await ctx.send(
+                    "{}".format(role_obj.mention),
+                    allowed_mentions=discord.AllowedMentions(
+                        everyone=False, users=False, roles=[role_obj]
+                    ),
+                )
+            await asyncio.sleep(5)
+            await role_obj.edit(mentionable=False)
         else:
-            await ctx.send(message, allowed_mentions=mentionPerms)
+            if message:
+                await ctx.send(
+                    "{}: {}".format(role_obj.mention, message),
+                    allowed_mentions=discord.AllowedMentions(
+                        everyone=False, users=False, roles=[role_obj]
+                    ),
+                )
+            else:
+                await ctx.send("{}".formal(role_obj.mention), allowed_mentions=discord.AllowedMentions(everyone=False, users=False, roles=[role_obj]))
                     
