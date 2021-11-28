@@ -27,37 +27,5 @@ class Say(commands.Cog):
             pass
         await ctx.send(message)
         
-    @commands.command("loudsay", aliases=["lecho", "lsay", "loudecho", "forcemention"])
-    @checks.admin_or_permissions(manage_roles=True)
-    async def loudsay(self, ctx, role: FuzzyRole, *, message=None):
-        """Same as `[p]say` command but [botname] can mention roles"""
-        role_obj = role
-        if not role_obj.mentionable:
-            await role_obj.edit(mentionable=True)
-            if message:
-                await ctx.send(
-                    "{}: {}".format(role_obj.mention, message),
-                    allowed_mentions=discord.AllowedMentions(
-                        everyone=False, users=False, roles=[role_obj]
-                    ),
-                )
-            else:
-                await ctx.send(
-                    "{}".format(role_obj.mention),
-                    allowed_mentions=discord.AllowedMentions(
-                        everyone=False, users=False, roles=[role_obj]
-                    ),
-                )
-            await asyncio.sleep(5)
-            await role_obj.edit(mentionable=False)
-        else:
-            if message:
-                await ctx.send(
-                    "{}: {}".format(role_obj.mention, message),
-                    allowed_mentions=discord.AllowedMentions(
-                        everyone=False, users=False, roles=[role_obj]
-                    ),
-                )
-            else:
-                await ctx.send("{}".formal(role_obj.mention), allowed_mentions=discord.AllowedMentions(everyone=False, users=False, roles=[role_obj]))
+
                     
